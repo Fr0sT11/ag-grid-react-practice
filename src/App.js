@@ -15,8 +15,8 @@ const App = () => {
   }, [])
 
   const onButtonClick = e => {
-    const selectedNodes = gridRef.current.api.getSelectedNodes();
-    const selectedData = selectedNodes.map( node => node.data );
+    const selectedNodes = gridRef.current.api.getSelectedNodes()
+    const selectedData = selectedNodes.map( node => node.data )
     const selectedDataStringPresentation = selectedData.map( node => `${node.make} ${node.model}`).join(', ')
     alert(`Selected nodes: ${selectedDataStringPresentation}`)
   }
@@ -28,6 +28,7 @@ const App = () => {
     >
       <button onClick={onButtonClick}>Get Selected Rows</button>
       <AgGridReact
+        ref={gridRef}
         rowData={rowData}
         rowSelection="multiple">
           <AgGridColumn field="make" sortable={ true } filter={ true } checkboxSelection={true}></AgGridColumn>
